@@ -1,5 +1,7 @@
 package org.launchcode.techjobs_oo;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Objects;
 
 public class Job {
@@ -14,7 +16,7 @@ public class Job {
     private CoreCompetency coreCompetency;
 
     public Job(){
-        nextId = id;
+        id = nextId;
         nextId++;
     }
 
@@ -25,6 +27,13 @@ public class Job {
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
+    }
+
+    public String toString(){
+        if (this.name == ""){
+            this.name = "Data not available";
+        }
+        return "\n"+ "\n" + "ID: "+ this.id + "\nName: "+ this.name+ "\nEmployer: "+ this.employer+ "\nLocation: "+ this.location+ "\nPosition Type: "+ this.positionType+ "\nCore Competency: "+ this.coreCompetency + "\n"+"\n";
     }
 
     @Override
