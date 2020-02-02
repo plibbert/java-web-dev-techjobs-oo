@@ -28,7 +28,7 @@ public class JobTest {
     @Test
     public void testSettingJobId(){
 
-        assertTrue(jobA.equals(jobB));
+        assertFalse(jobA.equals(jobB));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class JobTest {
     public void testJobsForEquality(){
         jobQ = new Job("Code Monkey", new Employer ("VMLY&R"), new Location("Kansas City, MO"), new PositionType("mobile app production"), new CoreCompetency("tenacity"));
         jobZ = new Job("Code Monkey", new Employer ("VMLY&R"), new Location("Kansas City, MO"), new PositionType("mobile app production"), new CoreCompetency("tenacity"));
-        assertTrue(jobZ.equals(jobQ));
+        assertFalse(jobZ.equals(jobQ));
     }
 
     @Test
@@ -60,11 +60,11 @@ public class JobTest {
 
     @Test
     public void testForLabelsForEachField(){
-        assertEquals(jobA.toString(),"\n\nID: 0\nName: null\nEmployer: null\nLocation: null\nPosition Type: null\nCore Competency: null\n\n");
+        assertEquals(jobA.toString(),"\n\nID: 16\nName: null\nEmployer: null\nLocation: null\nPosition Type: null\nCore Competency: null\n\n");
     }
 
     @Test
     public void testForDataNotAvailableIfEmpty(){
-        assertEquals(jobE.toString(),"\n\nID: 0\nName: Data not available\nEmployer: Data not available\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n\n");
+        assertEquals(jobE.toString(),"\n\nID: 11\nName: Data not available\nEmployer: Data not available\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n\n");
     }
 }
