@@ -13,12 +13,8 @@ public class JobTest {
     private static Job jobB;
     private static Job jobE;
     private static Job jobY;
-//    Job jobA;
-//    Job jobB;
-    Job newJob;
-    Job jobQ;
-    Job jobZ;
-//    Job jobE;
+    private static Job newJob;
+
 
     @Test
     public void emptyTest() {
@@ -28,7 +24,7 @@ public class JobTest {
     public static void createJob(){
      jobA = new Job();
      jobB = new Job();
-     jobE = new Job("", new Employer(), new Location(), new PositionType(), new CoreCompetency());
+     jobE = new Job("", new Employer("Tomorrow Land"), new Location(), new PositionType(), new CoreCompetency());
      jobY = new Job("potato peeler", new Employer("foodworld"), new Location ("here"), new PositionType("the help"), new CoreCompetency("vegetable peelers"));
     }
     @Test
@@ -53,8 +49,8 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality(){
-        jobQ = new Job("Code Monkey", new Employer ("VMLY&R"), new Location("Kansas City, MO"), new PositionType("mobile app production"), new CoreCompetency("tenacity"));
-        jobZ = new Job("Code Monkey", new Employer ("VMLY&R"), new Location("Kansas City, MO"), new PositionType("mobile app production"), new CoreCompetency("tenacity"));
+        Job jobQ = new Job("Code Monkey", new Employer ("VMLY&R"), new Location("Kansas City, MO"), new PositionType("mobile app production"), new CoreCompetency("tenacity"));
+        Job jobZ = new Job("Code Monkey", new Employer ("VMLY&R"), new Location("Kansas City, MO"), new PositionType("mobile app production"), new CoreCompetency("tenacity"));
         assertFalse(jobZ.equals(jobQ));
     }
 
@@ -71,11 +67,16 @@ public class JobTest {
 
     @Test
     public void testForDataNotAvailableIfEmpty(){
-        assertEquals(jobE.toString(),"\n\nID: 3\nName: Data not available\nEmployer: Data not available\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n\n");
+        assertEquals(jobE.toString(),"\n\nID: 3\nName: Data not available\nEmployer: Tomorrow Land\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n\n");
     }
 
     @Test
     public void testForEmptyJobExceptId(){
+        Job newJobD = new Job("", new Employer(), new Location(), new PositionType(), new CoreCompetency());
+        assertEquals(newJobD.toString(),"Oops, this job does not seem to exist!");
+    }
+    @Test
+    public void testForNullJob(){
         assertEquals(jobA.toString(), "Oops, this job does not seem to exist!");
     }
 }
