@@ -1,6 +1,7 @@
 package org.launchcode.techjobs_oo.Tests;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 
@@ -8,22 +9,27 @@ import static org.junit.Assert.*;
 
 public class JobTest {
 
-    Job jobA;
-    Job jobB;
+    private static Job jobA;
+    private static Job jobB;
+    private static Job jobE;
+    private static Job jobY;
+//    Job jobA;
+//    Job jobB;
     Job newJob;
     Job jobQ;
     Job jobZ;
-    Job jobE;
+//    Job jobE;
 
     @Test
     public void emptyTest() {
         assertEquals(true, true);
     }
-    @Before
-    public void createJob(){
+    @BeforeClass
+    public static void createJob(){
      jobA = new Job();
      jobB = new Job();
      jobE = new Job("", new Employer(), new Location(), new PositionType(), new CoreCompetency());
+     jobY = new Job("potato peeler", new Employer("foodworld"), new Location ("here"), new PositionType("the help"), new CoreCompetency("vegetable peelers"));
     }
     @Test
     public void testSettingJobId(){
@@ -60,11 +66,16 @@ public class JobTest {
 
     @Test
     public void testForLabelsForEachField(){
-        assertEquals(jobA.toString(),"\n\nID: 16\nName: null\nEmployer: null\nLocation: null\nPosition Type: null\nCore Competency: null\n\n");
+        assertEquals(jobY.toString(),"\n\nID: 4\nName: potato peeler\nEmployer: foodworld\nLocation: here\nPosition Type: the help\nCore Competency: vegetable peelers\n\n");
     }
 
     @Test
     public void testForDataNotAvailableIfEmpty(){
-        assertEquals(jobE.toString(),"\n\nID: 11\nName: Data not available\nEmployer: Data not available\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n\n");
+        assertEquals(jobE.toString(),"\n\nID: 3\nName: Data not available\nEmployer: Data not available\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n\n");
+    }
+
+    @Test
+    public void testForEmptyJobExceptId(){
+        assertEquals(jobA.toString(), "Oops, this job does not seem to exist!");
     }
 }

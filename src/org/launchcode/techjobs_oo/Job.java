@@ -30,6 +30,12 @@ public class Job {
     }
 
     public String toString(){
+        if (this.name == null && this.employer == null && this.location == null && this.positionType == null && this.coreCompetency == null){
+            return "Oops, this job does not seem to exist!";
+        }
+//        if (this.name == "" && this.employer == "Data not available" && this.location == "Data not available" && this.positionType == "Data not available" && this.coreCompetency == "Data not available"){
+//            return "Oops, this job does not seem to exist!";
+//        }
         if (this.name == ""){
             this.name = "Data not available";
         }
